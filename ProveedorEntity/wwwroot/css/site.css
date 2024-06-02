@@ -1,0 +1,69 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.btn-light {
+    background-color: orangered;
+    color: white;
+}
+
+    .btn-light:hover {
+        background-color: darkorange;
+        color: white;
+    }
+
+    .btn-light:focus {
+        background-color: orangered;
+        color: white;
+    }
+
+    .btn-warning {
+        color: white
+    }
+
+        .btn-warning:hover {
+            border-color: darkgoldenrod;
+            background-color: darkgoldenrod;
+            color: white;
+        }
+
+.btn-info {
+    border-color: cadetblue;
+    background-color: cadetblue;
+    color: white;
+}
+
+.btn-info:hover {
+    border-color: darkcyan;
+    background-color: darkcyan;
+    color: white
+}
+
+    .btn-info:focus {
+        border-color: cadetblue;
+        background-color: cadetblue;
+        color: white;
+    }
