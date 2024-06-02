@@ -33,10 +33,10 @@ namespace ProveedorEntity.Controllers
 
         public IActionResult ExportarCSV()
         {
-            var proveedores = _context.Proveedors.ToList(); // Obtén los datos de la base de datos
+            var proveedores = _context.Proveedors.ToList(); 
 
             var csv = new StringBuilder();
-            csv.AppendLine("Id,Nombre,Email,Direccion,Telefono"); // Encabezados del archivo CSV
+            csv.AppendLine("Id,Nombre,Email,Direccion,Telefono"); 
 
             foreach (var proveedor in proveedores)
             {
@@ -46,32 +46,32 @@ namespace ProveedorEntity.Controllers
             byte[] byteArray = Encoding.UTF8.GetBytes(csv.ToString());
             MemoryStream stream = new MemoryStream(byteArray);
 
-            // Devuelve el archivo CSV para descargar
+            
             return File(stream, "text/csv", "proveedores.csv");
         }
 
         public IActionResult ExportarPDF()
         {
-            var proveedores = _context.Proveedors.ToList(); // Obtén los datos de la base de datos
+            var proveedores = _context.Proveedors.ToList(); 
 
             MemoryStream memoryStream = new MemoryStream();
             PdfWriter writer = new PdfWriter(memoryStream);
             PdfDocument pdfDocument = new PdfDocument(writer);
             Document document = new Document(pdfDocument);
 
-            // Agrega un título al documento PDF
+            
             document.Add(new Paragraph("Lista de Proveedores"));
 
-            // Agrega los datos de los proveedores al documento PDF
+            
             foreach (var proveedor in proveedores)
             {
                 document.Add(new Paragraph($"ID: {proveedor.Id}, Nombre: {proveedor.Nombre}, Email: {proveedor.Email}, Dirección: {proveedor.Direccion}, Teléfono: {proveedor.Telefono ?? "N/A"}"));
             }
 
-            // Cierra el documento PDF
+            
             document.Close();
 
-            // Establece el tipo de contenido y el nombre del archivo
+            
             return File(memoryStream.ToArray(), "application/pdf", "proveedores.pdf");
         }
 
@@ -134,7 +134,7 @@ public async Task<IActionResult> Details(int? id)
         private bool IsReCaptchValid()
         {
             var captchaResponse = Request.Form["g-recaptcha-response"];
-            var secretKey = "6Ld17_UnAAAAAOWs0zTT-UxMYONIZ9Eo4vdUM1aG";  // clave secreta de reCAPTCHA
+            var secretKey = "6Ld17_UnAAAAAOWs0zTT-UxMYONIZ9Eo4vdUM1aG";  
 
             using (var httpClient = new HttpClient())
             {
@@ -147,7 +147,7 @@ public async Task<IActionResult> Details(int? id)
                 }
                 else
                 {
-                    // Maneja el error de reCAPTCHA
+                    
                     return false;
                 }
             }
